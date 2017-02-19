@@ -25,6 +25,7 @@ ENV MYHOME=/home/jenkins
 
 RUN mkdir -p $MYHOME
 WORKDIR $MYHOME
+COPY test/Makefile $MYHOME/
 VOLUME ["$MYHOME"]
 
 COPY docker-entrypoint.sh /
