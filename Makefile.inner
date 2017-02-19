@@ -1,0 +1,12 @@
+#
+# This is the default makefile inside the container. This is simply a sample
+# makefile, since once you mount /src from outside, everything there will
+# be hidden.
+#
+
+# Check how the exports are propagated
+env:
+	/bin/bash -c "export"
+
+inspect:
+	ls -al /etc
