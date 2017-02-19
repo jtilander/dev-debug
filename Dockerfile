@@ -17,6 +17,9 @@ RUN apk add --no-cache \
 
 ENV P4_VERSION 16.1
 RUN curl -sSL -O http://cdist2.perforce.com/perforce/r${P4_VERSION}/bin.linux26x86_64/p4 && mv p4 /usr/bin/p4 && chmod +x /usr/bin/p4
+RUN mkdir /lib64
+ADD ubuntu-libc.tgz /lib
+ADD ld-linux-x86-64.so.2.tgz /lib64
 
 ENV VISUAL=vi
 ENV P4CONFIG=.p4config
