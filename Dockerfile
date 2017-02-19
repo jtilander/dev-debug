@@ -21,10 +21,11 @@ RUN curl -sSL -O http://cdist2.perforce.com/perforce/r${P4_VERSION}/bin.linux26x
 ENV VISUAL=vi
 ENV P4CONFIG=.p4config
 
-RUN mkdir -p /src
-WORKDIR /src
-COPY Makefile.inner /src/Makefile
-VOLUME ["/src"]
+ENV MYHOME=/home/jenkins
+
+RUN mkdir -p $MYHOME
+WORKDIR $MYHOME
+VOLUME ["$MYHOME"]
 
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]

@@ -10,10 +10,10 @@ The container itself is a little bit on the fat side, since it contains all sort
 This will execute the default makefile target in the current directory:
 
 ```
-docker run --rm -v .:/src jtilander/dev-debug
+docker run --rm -v .:/home/jenkins jtilander/dev-debug
 ```
 
 ## Volumes
 
-You can mount any directory with a makefile into /src and the default entrypoint and command will execute make. This gives you the ability to simply run make commands inside the container easily, but with data that you mounted externally.
+You can mount any directory with a makefile into /home/jenkins and the default entrypoint and command will execute make. This gives you the ability to simply run make commands inside the container easily, but with data that you mounted externally.
 

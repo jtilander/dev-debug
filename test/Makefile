@@ -1,6 +1,6 @@
 #
 # This is the default makefile inside the container. This is simply a sample
-# makefile, since once you mount /src from outside, everything there will
+# makefile, since once you mount $MYHOME from outside, everything there will
 # be hidden.
 #
 

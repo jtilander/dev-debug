@@ -24,7 +24,7 @@ clean:
 	docker rmi `docker images -q $(IMAGENAME):$(TAG)`
 
 run:
-	docker run --rm -e DEV_TEST=$(DEV_TEST) -e DEV_USER=$(DEV_USER) -it $(IMAGENAME):$(TAG) make $(RUN_ARGS)
+	docker run --rm -e DEV_TEST=$(DEV_TEST) -e DEV_USER=$(DEV_USER) -it -v `pwd`/test:/home/jenkins $(IMAGENAME):$(TAG) make $(RUN_ARGS)
 
 debug:
-	docker run --rm -e DEV_TEST=$(DEV_TEST) -e DEV_USER=$(DEV_USER) -it $(IMAGENAME):$(TAG) bash
+	docker run --rm -e DEV_TEST=$(DEV_TEST) -e DEV_USER=$(DEV_USER) -it -v `pwd`/test:/home/jenkins $(IMAGENAME):$(TAG) bash
