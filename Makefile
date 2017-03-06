@@ -2,6 +2,11 @@ IMAGENAME?=jtilander/dev-debug
 TAG?=test
 DEV_TEST?=42
 DEV_USER?=root
+TERM?=xterm
+DOCKER=command docker
+VOLUMES=-v $(PWD)/test:/home/jenkins
+ENVIRONMENT=-e TERM=$(TERM)
+PORTS=-p 9000:9000
 
 # If the first argument is "run"...
 ifeq (run,$(firstword $(MAKECMDGOALS)))
@@ -14,17 +19,19 @@ endif
 .PHONY: image push clean run debug
 
 image:
-	docker build -t $(IMAGENAME):$(TAG) .
-	docker images $(IMAGENAME):$(TAG)
+	$(DOCKER) build -t $(IMAGENAME):$(TAG) .
+	$(DOCKER) images $(IMAGENAME):$(TAG)
 
 push: image
-	docker push $(IMAGENAME):$(TAG)
+	$(DOCKER) push $(IMAGENAME):$(TAG)
 
 clean:
-	docker rmi `docker images -q $(IMAGENAME):$(TAG)`
+	$(DOCKER) rmi `docker images -q $(IMAGENAME):$(TAG)`
+	$(DOCKER) run --rm -v `pwd`/test:/mnt alpine:3.5 /bin/sh -c "rm -rf /mnt"
 
 run:
-	docker run --rm -e DEV_TEST=$(DEV_TEST) -e DEV_USER=$(DEV_USER) -it -v `pwd`/test:/home/jenkins $(IMAGENAME):$(TAG) make $(RUN_ARGS)
+	$(DOCKER) run --rm $(VOLUMES) $(ENVIRONMENT) $(PORTS) -it $(IMAGENAME):$(TAG) $(RUN_ARGS)
 
 debug:
-	docker run --rm -e DEV_TEST=$(DEV_TEST) -e DEV_USER=$(DEV_USER) -it -v `pwd`/test:/home/jenkins $(IMAGENAME):$(TAG) bash
+	$(DOCKER) run --rm $(VOLUMES) $(ENVIRONMENT) $(PORTS) -it $(IMAGENAME):$(TAG) bash
+

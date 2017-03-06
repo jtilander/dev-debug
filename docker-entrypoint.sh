@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
 case "$1" in 
@@ -6,9 +6,19 @@ case "$1" in
 		shift
 		exec /usr/bin/make $*
 		;;
+	grunt)
+		shift
+		exec /usr/bin/grunt $*
+		;;
 	bash)
 		shift
-		exec /bin/bash $*
+		export TERM=xterm
+		exec /bin/bash --init-file /etc/profile.d/bash-prompt.sh $*
+		;;
+	zsh)
+		shift
+		export TERM=xterm
+		exec /bin/zsh $*
 		;;
 	pingtest)
 		exec /bin/ping -c 10 8.8.8.8
