@@ -29,11 +29,15 @@ COPY new-*.sh /usr/local/bin/
 RUN mkdir -p $MYHOME && chmod g+rwx $MYHOME
 
 RUN npm install -g \
+		@angular/cli \
 		bower \
-		generator-angular \
-		generator-karma \
 		grunt-cli \
-		yo
+		gulp-tslint \
+		gulp-typescript \
+		karma \
+		ts-node \
+		tslint \
+		typescript
 
 ENV UID=1000
 RUN adduser -D -u $UID jenkins
@@ -51,3 +55,9 @@ VOLUME ["$MYHOME"]
 
 # Default port for grunt serve
 EXPOSE 9000
+
+# Default port for angular2 typescript
+EXPOSE 4200
+
+# Default port for angular2 javascript
+EXPOSE 3000

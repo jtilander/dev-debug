@@ -6,7 +6,7 @@ TERM?=xterm
 DOCKER=command docker
 VOLUMES=-v $(PWD)/test:/home/jenkins
 ENVIRONMENT=-e TERM=$(TERM)
-PORTS=-p 9000:9000
+PORTS=-p 9000:9000 -p 3000:3000 -p 4200:4200
 
 # If the first argument is "run"...
 ifeq (run,$(firstword $(MAKECMDGOALS)))
@@ -34,4 +34,3 @@ run:
 
 debug:
 	$(DOCKER) run --rm $(VOLUMES) $(ENVIRONMENT) $(PORTS) -it $(IMAGENAME):$(TAG) bash
-
