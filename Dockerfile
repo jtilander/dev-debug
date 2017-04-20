@@ -17,7 +17,8 @@ RUN apk add --no-cache \
 		ruby-rake \
 		libuv \
 		libuv-dev \
-		zsh
+		zsh \
+		rsync
 
 ENV VISUAL=vi
 ENV P4CONFIG=.p4config
