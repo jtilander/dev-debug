@@ -18,7 +18,8 @@ RUN apk add --no-cache \
 		libuv \
 		libuv-dev \
 		zsh \
-		rsync
+		rsync \
+		openssh
 
 ENV VISUAL=vi
 ENV P4CONFIG=.p4config
