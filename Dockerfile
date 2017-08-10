@@ -25,6 +25,7 @@ ENV VISUAL=vi
 ENV P4CONFIG=.p4config
 
 ENV MYHOME=/home/jenkins
+ENV HOME=/home/jenkins
 
 COPY new-*.sh /usr/local/bin/
 
