@@ -1,25 +1,25 @@
-FROM jtilander/alpine
+FROM jtilander/alpine:0.0.2
 MAINTAINER Jim Tilander
 
 RUN apk add --no-cache \
 		g++ \
 		gcc \
+		libuv \
+		libuv-dev \
 		nodejs \
 		nodejs-dev \
+		openssh \
 		py-pip \
 		py-raven \
 		py-requests \
 		python \
+		rsync \
 		ruby \
 		ruby-bundler \
 		ruby-dev \
 		ruby-json \
 		ruby-rake \
-		libuv \
-		libuv-dev \
-		zsh \
-		rsync \
-		openssh
+		zsh
 
 ENV VISUAL=vi
 ENV P4CONFIG=.p4config
@@ -33,14 +33,12 @@ RUN mkdir -p $MYHOME && chmod g+rwx $MYHOME
 
 RUN npm install -g \
 		@angular/cli \
-		bower \
-		grunt-cli \
-		gulp-tslint \
-		gulp-typescript \
 		karma \
+		npm-check-updates \
 		ts-node \
 		tslint \
-		typescript
+		typescript \
+		yarn
 
 ENV UID=1000
 RUN adduser -D -u $UID jenkins
