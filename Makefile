@@ -3,7 +3,7 @@ TAG?=test
 DEV_TEST?=42
 DEV_USER?=root
 TERM?=xterm
-DOCKER=command docker
+DOCKER=docker
 VOLUMES=-v $(PWD)/test:/home/jenkins
 ENVIRONMENT=-e TERM=$(TERM)
 PORTS=-p 9000:9000 -p 3000:3000 -p 4200:4200
