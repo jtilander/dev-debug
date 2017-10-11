@@ -28,3 +28,9 @@ docker run --rm -v .:/home/jenkins jtilander/dev-debug
 
 You can mount any directory with a makefile into /home/jenkins and the default entrypoint and command will execute make. This gives you the ability to simply run make commands inside the container easily, but with data that you mounted externally.
 
+
+
+# TODO
+
+* Need to pin the versions of various packages inside this container.
+
