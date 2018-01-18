@@ -1,7 +1,10 @@
-FROM jtilander/alpine:0.0.2
+FROM jtilander/alpine:0.0.5
 MAINTAINER Jim Tilander
 
 RUN apk add --no-cache \
+		clang \
+		clang-analyzer \
+		clang-static \
 		g++ \
 		gcc \
 		libuv \
@@ -9,17 +12,21 @@ RUN apk add --no-cache \
 		nodejs \
 		nodejs-dev \
 		openssh \
-		py-pip \
-		py-raven \
-		py-requests \
-		python \
+		py3-raven \
+		py3-requests \
+		python3 \
+		python3-dev \
 		rsync \
 		ruby \
 		ruby-bundler \
 		ruby-dev \
 		ruby-json \
 		ruby-rake \
+		swig \
 		zsh
+
+# RUN pip3 --disable-pip-version-check install unittest-xml-reporting
+RUN pip3 --disable-pip-version-check install setuptools
 
 ENV VISUAL=vi
 ENV P4CONFIG=.p4config
