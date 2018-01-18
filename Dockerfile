@@ -47,7 +47,7 @@ RUN npm install -g \
 		typescript \
 		yarn
 
-ENV UID=1000
+ENV UID=10005
 RUN adduser -D -u $UID jenkins
 
 RUN mkdir -p /etc/skel
