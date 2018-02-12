@@ -12,6 +12,7 @@ RUN apk add --no-cache \
 		nodejs \
 		nodejs-dev \
 		openssh \
+		openssl-dev \
 		py3-raven \
 		py3-requests \
 		python3 \

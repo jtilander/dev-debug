@@ -1,5 +1,5 @@
 IMAGENAME?=jtilander/dev-debug
-TAG?=test
+TAG?=latest
 DEV_TEST?=42
 DEV_USER?=root
 TERM?=xterm
